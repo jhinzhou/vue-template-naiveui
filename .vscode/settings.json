@@ -1,0 +1,31 @@
+{
+  "i18n-ally.enabledParsers": ["js", "json"],
+  "i18n-ally.keystyle": "nested",
+  "i18n-ally.sortKeys": true,
+  "i18n-ally.namespace": false,
+  "i18n-ally.sourceLanguage": "zh-cn",
+  "i18n-ally.displayLanguage": "zh-cn",
+  "i18n-ally.enabledFrameworks": ["vue"],
+  "i18n-ally.localesPaths": ["src/locales/langs"],
+  "editor.formatOnSave": false,
+
+  // Auto fix
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "never"
+  },
+
+  // Enable eslint for all supported languages
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "vue",
+    "html",
+    "markdown",
+    "json",
+    "jsonc"
+  ],
+  "liveServer.settings.port": 5501
+}
