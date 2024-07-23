@@ -1,13 +1,21 @@
-import { useDark } from '@vueuse/core'
 import { defineStore } from 'pinia'
 
 export const useAppStore = defineStore('app', () => {
-  const isDark = useDark()
-  const toggleDark = () => {
+  const isDark = ref(false)
+  const toggleTheme = () => {
     isDark.value = !isDark.value
   }
 
-  return { isDark, toggleDark }
+  const lang = ref('zh')
+  const updateLang = (val) => {
+    lang.value = val
+  }
+
+  const alarm = ref(0)
+  const updateAlarm = (val) => {
+    alarm.value = val
+  }
+  return { isDark, toggleTheme, lang, updateLang, alarm, updateAlarm }
 }, {
   persist: true,
 })

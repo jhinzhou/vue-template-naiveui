@@ -1,5 +1,8 @@
 <template>
-  <ZHeader />
+  <ZHeader>
+    <template #left />
+    <template #center />
+  </ZHeader>
   <RouterView />
 </template>
 

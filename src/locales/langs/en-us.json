@@ -4,5 +4,10 @@
   "hello": "Hello",
   "user": {
     "name": "name"
-  }
+  },
+  "Login": "Log In System",
+  "InputAccount": "Please enter your account",
+  "InputPassword": "Please enter your password",
+  "UseFace": "Face Recognition",
+  "Or": "or"
 }

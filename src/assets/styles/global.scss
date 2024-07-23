@@ -1,3 +1,5 @@
+@import './naive.scss';
+
 html,
 body {
   width: 100%;
@@ -29,25 +31,31 @@ body {
 /* 自定义滚动条样式 */
 .cus-scroll {
   overflow: auto;
+
   &::-webkit-scrollbar {
     width: 8px;
     height: 8px;
   }
 }
+
 .cus-scroll-x {
   overflow-x: auto;
+
   &::-webkit-scrollbar {
     width: 0;
     height: 8px;
   }
 }
+
 .cus-scroll-y {
   overflow-y: auto;
+
   &::-webkit-scrollbar {
     width: 8px;
     height: 0;
   }
 }
+
 .cus-scroll,
 .cus-scroll-x,
 .cus-scroll-y {
@@ -55,10 +63,12 @@ body {
     background-color: transparent;
     border-radius: 4px;
   }
+
   &:hover {
     &::-webkit-scrollbar-thumb {
       background: #bfbfbf;
     }
+
     &::-webkit-scrollbar-thumb:hover {
       background: rgb(var(--primary-color));
     }
@@ -80,10 +90,41 @@ body {
   from {
     clip-path: circle(0 at var(--circle-x) var(--circle-y));
   }
+
   to {
     clip-path: circle(var(--circle-r) at var(--circle-x) var(--circle-y));
   }
 }
-.router-full{
+
+.router-full {
   height: calc(100% - 60px);
+}
+
+.dark-theme {
+  --un-bg-opacity: 1;
+  background-color: rgb(34 34 34 / var(--un-bg-opacity));
+
+  .custom-color {
+    color: #ffffffd1 !important;
+  }
+
+  .custom-avatar {
+    background-color: #7fe7c4 !important;
+    color: black !important;
+  }
+}
+
+.light-theme {
+  --un-bg-opacity: 1;
+  // background-color: rgb(246 246 246 / var(--un-bg-opacity));
+  background-image: url('@/assets/images/bg.jpg');
+  background-size: cover;
+}
+
+.large-type {
+  height: 46px !important;
+}
+
+.alarm {
+  box-shadow: rgb(186, 19, 88, 0.42);
 }
