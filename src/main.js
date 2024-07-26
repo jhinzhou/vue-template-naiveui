@@ -4,7 +4,7 @@ import 'uno.css'
 import 'virtual:uno.css'
 
 // 通用字体
-import 'vfonts/Lato.css'
+// import 'vfonts/Lato.css'
 // 等宽字体
 import 'vfonts/FiraCode.css'
 

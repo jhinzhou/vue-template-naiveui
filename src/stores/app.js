@@ -11,11 +11,19 @@ export const useAppStore = defineStore('app', () => {
     lang.value = val
   }
 
-  const alarm = ref(0)
-  const updateAlarm = (val) => {
-    alarm.value = val
+  const currentView = ref('dashboard')
+  const updateCurrentView = (val) => {
+    currentView.value = val
   }
-  return { isDark, toggleTheme, lang, updateLang, alarm, updateAlarm }
+  return { isDark, toggleTheme, lang, updateLang, currentView, updateCurrentView }
+}, {
+  persist: true,
+})
+
+export const useFileBoxStore = defineStore('fileBox', () => {
+  const fileBoxList = ref([])
+
+  return { fileBoxList }
 }, {
   persist: true,
 })

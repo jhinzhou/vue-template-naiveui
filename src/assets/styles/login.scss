@@ -1,7 +1,7 @@
 .login-form {
-  width: 46%;
-  height: 100%;
-
+  width: 66%;
+  height: 80%;
+  margin-left: 17%;
   .n-input {
     width: 60% !important;
     margin-bottom: 12px !important;
@@ -13,13 +13,5 @@
 
   .n-divider {
     width: 60% !important;
-  }
-}
-
-.login-illustration {
-  width: 54%;
-  height: 100%;
-  img {
-    width: 80%;
   }
 }
