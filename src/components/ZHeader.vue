@@ -4,7 +4,7 @@
     <div class="header-center f-s-c-r" />
     <div class="header-right">
       <n-input
-        v-if="showSearch" round placeholder="搜索档案盒或者文件名称等" class="custon-search"
+        v-if="showSearch" round placeholder="搜索档案盒或者文件名称等" class="custom-search"
         passively-activated autofocus
         @change="handleChange"
         @blur="onHandleBlurSearch"
@@ -120,7 +120,7 @@ const goto = ({ clientX, clientY }, val) => {
     font-weight: 700;
     line-height: 60px;
   }
-  .custon-search {
+  .custom-search {
     width: 260px;
     margin-right: 4px;
   }
