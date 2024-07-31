@@ -10,6 +10,7 @@
           :key="index"
           :class="classFormate(item)"
           class="file-item"
+          @click="gotoArchive($event, item)"
         >
           <!-- {{ index + 1 }} -->
         </div>
@@ -23,6 +24,8 @@
 </template>
 
 <script setup>
+import { toggleAnimation } from '@/utils/tools'
+
 function getRandom(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min
 }
@@ -35,6 +38,12 @@ onMounted(() => {
     })
   }
 })
+
+const router = useRouter()
+const gotoArchive = ({ clientX, clientY }, row) => {
+  toggleAnimation(clientX, clientY, () => router.push('/archives'))
+}
+
 const classFormate = (val) => {
   if (val.state === 0) {
     return 'empty'
@@ -55,11 +64,11 @@ const classFormate = (val) => {
 .file-body {
   width: 80%;
   height: 90%;
-  margin-left: 10%;
+  margin-left: calc(10% - 4px);
   margin-top: 4%;
   border: 4px solid #ffffff;
   background-color: #ffffff;
-  border-radius: 8px 8px 4px 4px;
+  border-radius: 12px 12px 4px 4px;
   color: #ffffff;
   box-shadow: 4px 4px 14px rgba(0, 0, 0, 0.4);
 }
@@ -76,14 +85,14 @@ const classFormate = (val) => {
 .file-title {
   width: 100%;
   height: 40px;
-  border-radius: 8px 8px 0 0;
+  border-radius: 10px 10px 0 0;
   background-color: #18a057bd;
   text-align: center;
   font-weight: 700;
   line-height: 40px;
 }
 .file-item {
-  border-radius: 5px;
+  border-radius: 6px;
   display: flex;
   font-size: 12px;
   align-items: flex-end;

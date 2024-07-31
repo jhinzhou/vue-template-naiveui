@@ -1,7 +1,11 @@
-.login-form {
-  width: 66%;
-  height: 80%;
-  margin-left: 17%;
+.login-box {
+  width: 95%;
+  height: calc(90% - 2px);
+  margin-top: 2%;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 4px 4px 14px rgba(0, 0, 0, 0.4);
+
   .n-input {
     width: 60% !important;
     margin-bottom: 12px !important;
@@ -14,4 +18,23 @@
   .n-divider {
     width: 60% !important;
   }
+}
+
+.login-form {
+  width: 66%;
+  height: 100%;
+  position: relative;
+}
+
+.login-illustration {
+  width: 34%;
+  height: 100%;
+  background: #f7f8fb;
+  border-radius: 0 16px 16px 0;
+}
+
+.copyright {
+  position: absolute;
+  bottom: 2px;
+  color: #949798;
 }

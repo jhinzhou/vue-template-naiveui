@@ -1,6 +1,8 @@
 <template>
   <div class="header-view f-c-c">
-    <div class="header-left" />
+    <div class="header-left f-s-c-r">
+      <img src="@/assets/images/logo_cnnc.png">
+    </div>
     <div class="header-center f-s-c-r" />
     <div class="header-right">
       <n-input
@@ -16,21 +18,24 @@
       <i v-else class="custom-color i-mingcute:search-3-fill mx-16 text-24" @click="onShowSearch" />
       <n-popover
         placement="bottom"
-        trigger="click"
+        trigger="manual"
+        :show="showFuncPopover"
         class="mx-16"
       >
         <template #trigger>
-          <i class="custom-color i-mingcute:classify-2-fill mx-16 text-24" />
+          <i class="custom-color i-mingcute:classify-2-fill mx-16 text-24" @click="showFuncPopover = !showFuncPopover" />
         </template>
         <div class="func-body">
-          <ZOption />
+          <ZOption @click="showFuncPopover = false" />
         </div>
       </n-popover>
-      <i class="custom-color mx-16 text-24" :class="appStore.isDark ? 'i-line-md:sunny-filled-loop-to-moon-alt-filled-loop-transition' : ' i-line-md:moon-filled-alt-to-sunny-filled-loop-transition'" @click="changeTheme" />
-      <i v-if="appStore.currentView === 'login'" class="custom-color i-mingcute:grid-2-fill mx-16 text-24" @click="goto($event, 'dashboard')" />
-      <i v-else-if="appStore.currentView === 'dashboard'" class="custom-color i-majesticons:login mx-16 text-24" @click="goto($event, 'login')" />
+      <i v-if="appStore.currentView === 'login'" class="custom-color i-mdi:cards mx-16 text-24" @click="goto($event, 'home')" />
+      <i v-else-if="appStore.currentView === 'home'" class="custom-color i-majesticons:login mx-16 text-24" @click="goto($event, 'login')" />
       <i v-else class="custom-color i-majesticons:logout mx-16 text-24" />
+      <i class="custom-color mx-16 text-24" :class="appStore.isDark ? 'i-line-md:sunny-filled-loop-to-moon-alt-filled-loop-transition' : ' i-line-md:moon-filled-alt-to-sunny-filled-loop-transition'" @click="changeTheme" />
       <!-- <i class="i-carbon:ibm-watson-language-translator custom-color mx-8 text-22" @click="changeLang" /> -->
+      <i v-if="true" class="i-material-symbols:signal-wifi-4-bar-rounded custom-color mx-16 text-24" />
+      <i v-else class="i-material-symbols:signal-wifi-bad-rounded custom-color mx-16 text-24" />
       <div class="header-time custom-color mx-16 text-20">
         {{ currentTime }}
       </div>
@@ -41,6 +46,7 @@
 <script setup>
 // import { useI18n } from 'vue-i18n'
 // import { storeToRefs } from 'pinia'
+// svg-spinners:bouncing-ball ic:baseline-amp-stories
 import { useAppStore } from '@/stores/app.js'
 import { dateFormat, toggleAnimation } from '@/utils/tools'
 import ZOption from '@/components/ZOption.vue'
@@ -54,6 +60,8 @@ const onHandleBlurSearch = () => {
   // blur貌似拿不到位置？？后边研究一下
   toggleAnimation(1344, 30, () => showSearch.value = false)
 }
+
+const showFuncPopover = ref(false)
 
 const appStore = useAppStore()
 // 方法可以解构const {toggleTheme, updateLang} = useAppStore() ，但是变量解构将不起作用，因为它破坏了响应性，所以要用 storeToRefs
@@ -96,11 +104,14 @@ const goto = ({ clientX, clientY }, val) => {
 .header-view {
   width: 100%;
   height: 60px;
-  // background: #ffffff16;
 }
 .header-left {
   width: 30%;
   height: 100%;
+  img {
+    height: 48px;
+    margin-left: 6px;
+  }
 }
 .header-center {
   width: 40%;

@@ -18,7 +18,7 @@
       <i class="i-mingcute:enter-door-fill mx-8 text-19" /><span class="mx-8 text-17">存入档案盒</span>
     </NButton>
     <NButton type="primary" round dashed @click="addBox">
-      <i class="i-mingcute:classify-add-fill mx-8 text-19" /><span class="mx-8 text-18">新增档案盒</span>
+      <i class="i-line-md:clipboard-plus-twotone mx-8 text-19" /><span class="mx-8 text-18">新增档案盒</span>
     </NButton>
   </div>
 </template>
@@ -95,11 +95,11 @@ const addBox = ({ clientX, clientY }) => {
 <style scoped lang="scss">
 .custom-table {
   height: 100%;
-  border-radius: 16px;
+  border-radius: 12px;
 }
 
 :deep(.n-data-table-base-table-header) {
-  border-radius: 16px 16px 0 0 !important;
+  border-radius: 12px 16px 0 0 !important;
 }
 
 :deep(.n-pagination) {

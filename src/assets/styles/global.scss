@@ -115,7 +115,13 @@ body {
 .dark-theme {
   --un-bg-opacity: 1;
   background-color: #131517;
-
+  .login-box {
+    background-color: #14151b !important;
+    box-shadow: 2px 2px 7px rgba(241, 241, 241, 0.24) !important;
+  }
+  .login-illustration{
+    background-color: #1e1e24 !important;
+  }
   .custom-color {
     color: #ffffffd1 !important;
   }
@@ -157,6 +163,10 @@ body {
     background-color: #14151b !important;
     box-shadow: 2px 2px 7px rgba(241, 241, 241, 0.24) !important;
   }
+  .custom-body{
+    background-color: #14151b !important;
+    box-shadow: 2px 2px 7px rgba(241, 241, 241, 0.24) !important;
+  }
 }
 
 .light-theme {
@@ -180,12 +190,25 @@ body {
   height: 90%;
   margin-top: 2%;
   background: #ffffff;
-  border-radius: 16px;
+  border-radius: 12px;
   border: 1px solid #18a05754;
   box-shadow: 4px 4px 14px rgba(0, 0, 0, 0.4);
   position: relative;
 }
-
+.custom-body {
+  background: #ffffff;
+  width: 100%;
+  height: 78%;
+  border-radius: 12px;
+  padding: 6px;
+  position: absolute;
+  bottom: 4px;
+  // box-shadow: 2px 2px 14px rgba(241, 241, 241, 0.122);
+}
+.custom-table {
+  height: 100%;
+  border-radius: 12px;
+}
 .operation-group {
   height: 60px;
   margin-top: -50px;
@@ -202,6 +225,16 @@ body {
 
 @mixin mp-left {
   padding-left: 6px;
+}
+
+.custom-title{
+  @include mp-left;
+  border-left: 6px solid #2080f0;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 22px;
+  margin-top: 29px;
+  margin-left: 25px;
 }
 
 .item-used {

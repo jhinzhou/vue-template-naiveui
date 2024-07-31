@@ -63,7 +63,7 @@
 .dash-card-item {
   width: calc(32% + 3px);
   height: 100%;
-  border-radius: 16px;
+  border-radius: 12px;
   background: #fff;
   font-size: 22px;
   font-weight: 600;

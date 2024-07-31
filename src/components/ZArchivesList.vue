@@ -13,7 +13,7 @@
     flex-height
     @update:checked-row-keys="handleCheck"
   />
-  <div class="operation-group f-s-c-r ml-26">
+  <div class="operation-group ml-26 f-s-c-r pb-4">
     <NButton type="primary" round dashed>
       <i class="i-mingcute:exit-door-fill mx-8 text-19" /><span class="mx-8 text-18">领出文件</span>
     </NButton>
@@ -21,7 +21,7 @@
       <i class="i-mingcute:enter-door-fill mx-8 text-19" /><span class="mx-8 text-17">存入文件</span>
     </NButton>
     <NButton type="primary" round dashed @click="addBox">
-      <i class="i-mingcute:classify-add-fill mx-8 text-19" /><span class="mx-8 text-18">新增文件</span>
+      <i class="i-line-md:document-add-twotone mx-8 text-19" /><span class="mx-8 text-18">新增文件</span>
     </NButton>
   </div>
 </template>
@@ -92,12 +92,12 @@ const addBox = ({ clientX, clientY }) => {
 .custom-table {
   height: calc(82% - 6px);
   margin-top: -3px;
-  border-radius: 16px;
+  border-radius: 12px;
   padding: 6px;
 }
 
 :deep(.n-data-table-base-table-header) {
-  border-radius: 16px 16px 0 0 !important;
+  border-radius: 12px 16px 0 0 !important;
 }
 
 :deep(.n-pagination) {

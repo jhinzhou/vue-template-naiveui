@@ -126,7 +126,7 @@ const saveFileBox = ({ clientX, clientY }) => {
   position: relative;
   padding-top: 29px;
   padding-left: 25px;
-  border-radius: 16px;
+  border-radius: 12px;
   background: #fff;
   font-size: 22px;
   font-weight: 600;

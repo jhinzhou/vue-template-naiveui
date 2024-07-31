@@ -3,14 +3,14 @@
     <div class="option-item f-a-c-r" @click="goto($event, 'log')">
       <img src="@/assets/images/log.png">
       <div class="text-20 fw-700">
-        日志管理
+        日志记录
       </div>
     </div>
     <n-divider dashed />
     <div class="option-item f-a-c-r" @click="goto($event, 'alarm')">
       <img src="@/assets/images/alarm.png">
       <div class="text-20 fw-700">
-        报警管理
+        报警记录
       </div>
     </div>
     <n-divider dashed />
