@@ -9,7 +9,7 @@
   >
     <ZHeader />
     <div class="main-full">
-      <ZFileBox />
+      <ZFileCab />
       <div class="router-view">
         <router-view v-slot="{ Component }">
           <component :is="Component" />
@@ -23,7 +23,7 @@
 import { darkTheme, dateZhCN, zhCN } from 'naive-ui'
 import { useAppStore } from '@/stores/app.js'
 import ZHeader from '@/components/ZHeader.vue'
-import ZFileBox from '@/components/ZFileBox.vue'
+import ZFileCab from '@/components/ZFileCab.vue'
 
 const appStore = useAppStore()
 const themeOverrides = {

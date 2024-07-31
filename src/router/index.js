@@ -5,7 +5,7 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      redirect: '/dashboard',
+      redirect: '/home',
     },
     {
       path: '/login',
@@ -13,14 +13,29 @@ const router = createRouter({
       component: () => import('../views/LoginView.vue'),
     },
     {
-      path: '/dashboard',
-      name: 'dashboard',
-      component: () => import('../views/DashboardView.vue'),
+      path: '/home',
+      name: 'home',
+      component: () => import('../views/HomeView.vue'),
     },
     {
-      path: '/option',
-      name: 'option',
-      component: () => import('../views/OptionView.vue'),
+      path: '/archives',
+      name: 'archives',
+      component: () => import('../views/Archives/ArchivesView.vue'),
+    },
+    {
+      path: '/log',
+      name: 'log',
+      component: () => import('../views/log/LogView.vue'),
+    },
+    {
+      path: '/user',
+      name: 'user',
+      component: () => import('../views/user/UserView.vue'),
+    },
+    {
+      path: '/alarm',
+      name: 'alarm',
+      component: () => import('../views/alarm/AlarmView.vue'),
     },
   ],
 })

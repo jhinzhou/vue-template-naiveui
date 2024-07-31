@@ -124,20 +124,36 @@ body {
     background-color: #7fe7c4 !important;
     color: black !important;
   }
-
-  .file-body{
+  .custom-view {
+    background-color: #14151b !important;
+    color: black !important;
+    box-shadow: 2px 2px 7px rgba(241, 241, 241, 0.24) !important;
+  }
+  .file-body {
     background-color: rgb(34 34 34 / var(--un-bg-opacity)) !important;
     color: black !important;
-    .file-item{
+
+    .file-item {
       color: black !important;
     }
   }
+
+  .file-card {
+    background-color: #14151b !important;
+    color: black !important;
+
+    .file-item {
+      color: black !important;
+    }
+  }
+
   .dash-card-item {
     background-color: #14151b !important;
     font-weight: 600 !important;
     box-shadow: 2px 2px 7px rgba(241, 241, 241, 0.24) !important;
   }
-  .dash-body{
+
+  .home-body {
     background-color: #14151b !important;
     box-shadow: 2px 2px 7px rgba(241, 241, 241, 0.24) !important;
   }
@@ -154,7 +170,61 @@ body {
 .large-type {
   height: 46px !important;
 }
+.custom-back {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+.custom-view {
+  width: 95%;
+  height: 90%;
+  margin-top: 2%;
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #18a05754;
+  box-shadow: 4px 4px 14px rgba(0, 0, 0, 0.4);
+  position: relative;
+}
+
+.operation-group {
+  height: 60px;
+  margin-top: -50px;
+  margin-left: 20px;
+
+  .n-button+.n-button {
+    margin-left: 12px;
+  }
+}
 
 .alarm {
   box-shadow: rgb(186, 19, 88, 0.42);
+}
+
+@mixin mp-left {
+  padding-left: 6px;
+}
+
+.item-used {
+  @include mp-left;
+  border-left: 6px solid #18a057;
+}
+
+.item-coming {
+  @include mp-left;
+  border-left: 6px solid #f0a020;
+}
+
+.item-over {
+  @include mp-left;
+  border-left: 6px solid #d03050;
+}
+
+.item-doc {
+  @include mp-left;
+  border-left: 6px solid #2080f0;
+}
+
+.item-number {
+  margin-right: 22px;
+  color: #626262;
 }

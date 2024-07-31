@@ -1,29 +1,32 @@
 <template>
   <div class="header-view f-c-c">
     <div class="header-left" />
-    <div class="header-center f-c-c">
-      <n-input round placeholder="输入档案盒名称或文件名称搜索" size="large">
-        <template #prefix>
-          <i class="custom-color i-mingcute:search-line mx-16 text-24" />
+    <div class="header-center f-s-c-r" />
+    <div class="header-right">
+      <n-input
+        v-if="showSearch" round placeholder="搜索档案盒或者文件名称等" class="custon-search"
+        passively-activated autofocus
+        @change="handleChange"
+        @blur="onHandleBlurSearch"
+      >
+        <template #suffix>
+          <i class="custom-color i-mingcute:search-3-fill text-24" />
         </template>
       </n-input>
-    </div>
-    <div class="header-right">
-      <i class="custom-color i-mingcute:search-3-fill mx-16 text-24" />
+      <i v-else class="custom-color i-mingcute:search-3-fill mx-16 text-24" @click="onShowSearch" />
       <n-popover
         placement="bottom"
         trigger="click"
         class="mx-16"
-        @update:show="handleUpdateShow"
       >
         <template #trigger>
-          <i class="custom-color i-mingcute:switch-fill mx-16 text-24" />
+          <i class="custom-color i-mingcute:classify-2-fill mx-16 text-24" />
         </template>
         <div class="func-body">
           <ZOption />
         </div>
       </n-popover>
-      <i class="custom-color mx-16 text-24" :class="appStore.isDark ? 'i-ri:moon-fill' : ' i-ri:sun-fill'" @click="changeTheme" />
+      <i class="custom-color mx-16 text-24" :class="appStore.isDark ? 'i-line-md:sunny-filled-loop-to-moon-alt-filled-loop-transition' : ' i-line-md:moon-filled-alt-to-sunny-filled-loop-transition'" @click="changeTheme" />
       <i v-if="appStore.currentView === 'login'" class="custom-color i-mingcute:grid-2-fill mx-16 text-24" @click="goto($event, 'dashboard')" />
       <i v-else-if="appStore.currentView === 'dashboard'" class="custom-color i-majesticons:login mx-16 text-24" @click="goto($event, 'login')" />
       <i v-else class="custom-color i-majesticons:logout mx-16 text-24" />
@@ -42,6 +45,15 @@ import { useAppStore } from '@/stores/app.js'
 import { dateFormat, toggleAnimation } from '@/utils/tools'
 import ZOption from '@/components/ZOption.vue'
 // const { locale } = useI18n()
+
+const showSearch = ref(false)
+const onShowSearch = ({ clientX, clientY }) => {
+  toggleAnimation(clientX, clientY, () => showSearch.value = true)
+}
+const onHandleBlurSearch = () => {
+  // blur貌似拿不到位置？？后边研究一下
+  toggleAnimation(1344, 30, () => showSearch.value = false)
+}
 
 const appStore = useAppStore()
 // 方法可以解构const {toggleTheme, updateLang} = useAppStore() ，但是变量解构将不起作用，因为它破坏了响应性，所以要用 storeToRefs
@@ -108,8 +120,13 @@ const goto = ({ clientX, clientY }, val) => {
     font-weight: 700;
     line-height: 60px;
   }
+  .custon-search {
+    width: 260px;
+    margin-right: 4px;
+  }
 }
 .func-body {
-  width: 200px;
+  width: 160px;
+  padding: 8px;
 }
 </style>

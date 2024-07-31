@@ -11,10 +11,10 @@
       :maxlength="20"
     >
       <template #password-visible-icon>
-        <i class="i-carbon:view" />
+        <i class="i-line-md:watch-loop" />
       </template>
       <template #password-invisible-icon>
-        <i class="i-carbon:view-filled" />
+        <i class="i-line-md:watch-off-twotone-loop" />
       </template>
     </n-input>
     <n-button round size="large" type="primary" class="large-type" @click="login">
@@ -25,7 +25,7 @@
       {{ $t('Or') }}
     </n-divider>
     <n-button round size="large" strong secondary class="large-type">
-      <i class="i-carbon:face-wink px-20 text-18" />
+      <i class="i-line-md:emoji-smile-wink px-20 text-18" />
       <span class="text-16">{{ $t('UseFace') }}</span>
     </n-button>
   </div>
@@ -34,7 +34,7 @@
 <script setup>
 const router = useRouter()
 const login = () => {
-  router.replace('/home/option')
+  router.replace('/home')
 }
 </script>
 

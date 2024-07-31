@@ -5,7 +5,12 @@
         RFID智能档案柜
       </div>
       <div class="file-view">
-        <div v-for="(item, index) in fileBoxList" :key="index" :class="classFormate(item)" class="file-item">
+        <div
+          v-for="(item, index) in fileBoxList"
+          :key="index"
+          :class="classFormate(item)"
+          class="file-item"
+        >
           <!-- {{ index + 1 }} -->
         </div>
       </div>
@@ -26,7 +31,7 @@ const fileBoxList = ref([])
 onMounted(() => {
   fileBoxList.value = []
   for (let i = 0; i < 60; i++) {
-    fileBoxList.value.push({ index: i, state: getRandom(1, 1),
+    fileBoxList.value.push({ index: i, state: getRandom(0, 1),
     })
   }
 })
@@ -41,7 +46,7 @@ const classFormate = (val) => {
     return 'warning'
   }
   if (val.state === 3) {
-    return 'danger'
+    return 'danger blinking'
   }
 }
 </script>
@@ -96,6 +101,12 @@ const classFormate = (val) => {
     background: #ffffff;
   }
 }
+.tips {
+  animation: blink-tips 0.6s infinite;
+}
+.alarm {
+  animation: blink-alarm 2s infinite;
+}
 .empty {
   background: #ffffffbd;
 }
@@ -107,5 +118,33 @@ const classFormate = (val) => {
 }
 .danger {
   background: #d03050bd;
+}
+@keyframes blink-alarm {
+  0% {
+    opacity: 1; /* 完全不透明 */
+  }
+  50% {
+    opacity: 0; /* 完全透明 */
+  }
+  100% {
+    opacity: 1; /* 再次不透明 */
+  }
+}
+@keyframes blink-tips {
+  0% {
+    opacity: 1; /* 完全不透明 */
+  }
+  25% {
+    opacity: 0.5; /* 完全不透明 */
+  }
+  50% {
+    opacity: 0; /* 完全透明 */
+  }
+  75% {
+    opacity: 0.5; /* 完全透明 */
+  }
+  100% {
+    opacity: 1; /* 再次不透明 */
+  }
 }
 </style>
