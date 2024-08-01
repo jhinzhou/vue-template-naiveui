@@ -15,7 +15,7 @@
         <n-form-item-gi :span="6" label="档案盒名称" path="inputValue">
           <n-input v-model:value="model.inputValue" placeholder="请输入档案盒名称" />
         </n-form-item-gi>
-        <n-form-item-gi :span="12" label="档案盒属性" path="dynamicTagsValue">
+        <n-form-item-gi :span="18" label="可存放的文件属性" path="dynamicTagsValue">
           <n-dynamic-tags v-model:value="model.dynamicTagsValue" size="large">
             <template #input="{ submit, deactivate }">
               <n-auto-complete
@@ -79,7 +79,7 @@ defineProps({
 const emit = defineEmits(['back'])
 const formRef = ref(null)
 const updateDisabled = ref(false)
-const model = ref({ inputValue: '', dynamicTagsValue: ['操作票', '校准证书'] })
+const model = ref({ inputValue: '', dynamicTagsValue: ['操作票', '校准证书'], typeCount: 12, count: 100 })
 
 const autoCompleteInstRef = ref(null)
 watch(autoCompleteInstRef, (value) => {

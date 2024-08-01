@@ -18,9 +18,9 @@ const router = createRouter({
       component: () => import('../views/HomeView.vue'),
     },
     {
-      path: '/archives',
-      name: 'archives',
-      component: () => import('../views/Archives/ArchivesView.vue'),
+      path: '/archive',
+      name: 'archive',
+      component: () => import('../views/Archive/ArchiveView.vue'),
     },
     {
       path: '/log',
@@ -36,6 +36,11 @@ const router = createRouter({
       path: '/alarm',
       name: 'alarm',
       component: () => import('../views/alarm/AlarmView.vue'),
+    },
+    {
+      path: '/setting',
+      name: 'setting',
+      component: () => import('../views/setting/SettingView.vue'),
     },
   ],
 })

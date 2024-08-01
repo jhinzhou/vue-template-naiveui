@@ -3,12 +3,12 @@
     <div>
       <ZFileBoxItem @back="back" />
     </div>
-    <ZArchivesList @add-box="showAddBox" />
+    <ZArchiveList @add-box="showAddBox" />
   </div>
 </template>
 
 <script setup>
-import ZArchivesList from '@/components/ZArchivesList.vue'
+import ZArchiveList from '@/components/ZArchiveList.vue'
 import ZFileBoxItem from '@/components/ZFileBoxItem.vue'
 </script>
 

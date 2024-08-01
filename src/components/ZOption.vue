@@ -20,6 +20,12 @@
         用户管理
       </div>
     </div>
+    <div class="option-item f-a-c-r" @click="goto($event, 'setting')">
+      <img src="@/assets/images/setting.png">
+      <div class="text-20 fw-700">
+        系统配置
+      </div>
+    </div>
   </div>
 </template>
 

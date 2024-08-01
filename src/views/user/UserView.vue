@@ -92,7 +92,7 @@ const createColumns = ({ showDetail }) => {
 }
 const columns = createColumns({
   // showDetail({ clientX, clientY }, row) {
-  //   toggleAnimation(clientX, clientY, () => router.push('/archives'))
+  //   toggleAnimation(clientX, clientY, () => router.push('/archive'))
   // },
 })
 </script>

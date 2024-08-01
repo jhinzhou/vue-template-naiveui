@@ -41,7 +41,7 @@ onMounted(() => {
 
 const router = useRouter()
 const gotoArchive = ({ clientX, clientY }, row) => {
-  toggleAnimation(clientX, clientY, () => router.push('/archives'))
+  toggleAnimation(clientX, clientY, () => router.push('/archive'))
 }
 
 const classFormate = (val) => {

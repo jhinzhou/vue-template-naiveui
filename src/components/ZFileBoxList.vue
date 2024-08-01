@@ -24,12 +24,12 @@
 </template>
 
 <script setup>
-import { NButton } from 'naive-ui'
+import { NButton, NEllipsis } from 'naive-ui'
 import { toggleAnimation } from '@/utils/tools'
 
 const emit = defineEmits(['addBox', 'showBox'])
 const data = [
-  { no: 1, title: '档案盒1', state: '在柜', attribute: '操作票, 校准证书', count: '20', dueTime: '2024-09-10' },
+  { no: 1, title: '档案盒1', state: '在柜', attribute: '操作票, 机器校准证书, 温湿度传感器校准证书', count: '20', dueTime: '2024-09-10' },
   { no: 2, title: '档案盒2', state: '在柜', attribute: '操作票, 校准证书', count: '18', dueTime: '2024-09-10' },
   { no: 3, title: '档案盒3', state: '在柜', attribute: '操作票, 校准证书', count: '12', dueTime: '2024-09-10' },
   { no: 4, title: '档案盒4', state: '在柜', attribute: '操作票, 校准证书', count: '12', dueTime: '2024-09-10' },
@@ -53,7 +53,11 @@ const createColumns = ({ showDetail }) => {
     { title: '位置', key: 'no', width: 60, align: 'center' },
     { title: '档案盒', key: 'title', align: 'center' },
     { title: '状态', key: 'state', align: 'center', width: 120, sorter: 'default' },
-    { title: '属性', key: 'attribute', align: 'center' },
+    { title: '属性', key: 'attribute', align: 'center', render(row) {
+      return h(NEllipsis, {}, {
+        default: () => row.attribute,
+      })
+    } },
     { title: '文件数量', key: 'count', sorter: 'default', width: 120, align: 'center' },
     { title: '最早过期', key: 'dueTime', sorter: 'default', align: 'center' },
     { title: '操作', key: 'opera', align: 'center', fixd: 'right', render(row) {
@@ -83,7 +87,7 @@ const handleCheck = (val) => {
 const router = useRouter()
 const columns = createColumns({
   showDetail({ clientX, clientY }, row) {
-    toggleAnimation(clientX, clientY, () => router.push('/archives'))
+    toggleAnimation(clientX, clientY, () => router.push('/archive'))
   },
 })
 
