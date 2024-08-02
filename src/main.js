@@ -15,9 +15,15 @@ import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import App from './App.vue'
 import router from './router'
 
+// 导入事件
+
+import { connectWs } from '@/utils/webSocket'
+
 import i18n from '@/locales/index'
 
 const app = createApp(App)
+
+connectWs()
 
 const pinia = createPinia()
 pinia.use(piniaPluginPersistedstate)

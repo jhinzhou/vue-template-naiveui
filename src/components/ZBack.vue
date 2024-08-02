@@ -12,9 +12,12 @@
 
 <script setup>
 import { toggleAnimation } from '@/utils/tools'
+import { useAppStore } from '@/stores/app.js'
 
 const router = useRouter()
+const appStore = useAppStore()
 const goBack = ({ clientX, clientY }) => {
+  appStore.updateCurrentView('home')
   toggleAnimation(clientX, clientY, () => router.push({ path: '/home' }))
 }
 </script>

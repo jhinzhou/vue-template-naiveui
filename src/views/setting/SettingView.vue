@@ -3,11 +3,12 @@
     <div class="custom-title custom-color">
       系统配置
     </div>
-    <div class="setting-item">
-      <div class="setting-title">
-        属性设置
-      </div>
-      <div class="setting-body" />
+    <div class="full-body">
+      <n-tabs type="segment" animated>
+        <n-tab-pane name="chap1" tab="属性配置" />
+        <n-tab-pane name="chap2" tab="权限配置" />
+        <n-tab-pane name="chap3" tab="操作配置" />
+      </n-tabs>
     </div>
     <ZBack />
   </div>

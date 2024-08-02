@@ -24,6 +24,7 @@ import { darkTheme, dateZhCN, zhCN } from 'naive-ui'
 import { useAppStore } from '@/stores/app.js'
 import ZHeader from '@/components/ZHeader.vue'
 import ZFileCab from '@/components/ZFileCab.vue'
+import { mitter } from '@/utils/mitt'
 
 const appStore = useAppStore()
 const themeOverrides = {
@@ -32,6 +33,22 @@ const themeOverrides = {
     // primaryColor: '#1890ff',
   },
 }
+const router = useRouter()
+
+onMounted(() => {
+  mitter.on('custom-ws-open', () => {
+  // 拿配置
+  // 拿柜子数据，拿文档数据
+  // 开始进入主页
+    setTimeout(() => {
+      appStore.updateCurrentView('home')
+      router.replace('/home')
+    }, 2000)
+  })
+})
+onUnmounted(() => {
+  mitter.off('custom-ws-open')
+})
 </script>
 
 <style scoped></style>

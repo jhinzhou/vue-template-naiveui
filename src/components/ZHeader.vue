@@ -6,7 +6,7 @@
     <div class="header-center f-s-c-r" />
     <div class="header-right">
       <n-input
-        v-if="showSearch" round placeholder="搜索档案盒或者文件名称等" class="custom-search"
+        v-if="showSearch && appStore.currentView === 'home'" round placeholder="搜索档案盒或者文件名称等" class="custom-search"
         passively-activated autofocus
         @change="handleChange"
         @blur="onHandleBlurSearch"
@@ -15,7 +15,7 @@
           <i class="custom-color i-mingcute:search-3-fill text-24" />
         </template>
       </n-input>
-      <i v-else class="custom-color i-mingcute:search-3-fill mx-16 text-24" @click="onShowSearch" />
+      <i v-if="!showSearch && appStore.currentView === 'home'" class="custom-color i-mingcute:search-3-fill mx-16 text-24" @click="onShowSearch" />
       <n-popover
         placement="bottom"
         trigger="manual"
@@ -31,7 +31,7 @@
       </n-popover>
       <i v-if="appStore.currentView === 'login'" class="custom-color i-mdi:cards mx-16 text-24" @click="goto($event, 'home')" />
       <i v-else-if="appStore.currentView === 'home'" class="custom-color i-majesticons:login mx-16 text-24" @click="goto($event, 'login')" />
-      <i v-else class="custom-color i-majesticons:logout mx-16 text-24" />
+      <i v-else class="custom-color i-majesticons:logout mx-16 text-24" @click="logout" />
       <i class="custom-color mx-16 text-24" :class="appStore.isDark ? 'i-line-md:sunny-filled-loop-to-moon-alt-filled-loop-transition' : ' i-line-md:moon-filled-alt-to-sunny-filled-loop-transition'" @click="changeTheme" />
       <!-- <i class="i-carbon:ibm-watson-language-translator custom-color mx-8 text-22" @click="changeLang" /> -->
       <i v-if="true" class="i-material-symbols:signal-wifi-4-bar-rounded custom-color mx-16 text-24" />
@@ -46,7 +46,7 @@
 <script setup>
 // import { useI18n } from 'vue-i18n'
 // import { storeToRefs } from 'pinia'
-// svg-spinners:bouncing-ball ic:baseline-amp-stories
+import { createDiscreteApi } from 'naive-ui'
 import { useAppStore } from '@/stores/app.js'
 import { dateFormat, toggleAnimation } from '@/utils/tools'
 import ZOption from '@/components/ZOption.vue'
@@ -98,6 +98,23 @@ const goto = ({ clientX, clientY }, val) => {
   appStore.updateCurrentView(val)
   toggleAnimation(clientX, clientY, () => router.push({ path: `/${val}` }))
 }
+
+const { dialog } = createDiscreteApi(['dialog'])
+const logout = ({ clientX, clientY }) => {
+  dialog.warning({
+    title: '提示',
+    content: '你确定要退出吗？',
+    positiveText: '确定',
+    negativeText: '取消',
+    closable: false,
+    onPositiveClick: () => {
+      appStore.updateCurrentView('home')
+      toggleAnimation(clientX, clientY, () => router.push({ path: '/home' }))
+    },
+    onNegativeClick: () => {
+    },
+  })
+}
 </script>
 
 <style lang="scss" scoped>
@@ -137,7 +154,7 @@ const goto = ({ clientX, clientY }, val) => {
   }
 }
 .func-body {
-  width: 160px;
+  width: 180px;
   padding: 8px;
 }
 </style>

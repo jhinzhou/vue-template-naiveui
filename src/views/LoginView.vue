@@ -28,7 +28,7 @@
       <n-divider dashed>
         {{ $t('Or') }}
       </n-divider>
-      <n-button round size="large" strong secondary class="large-type">
+      <n-button round size="large" strong secondary class="large-type" @click="faceRecognize">
         <i class="i-line-md:emoji-smile-wink px-20 text-18" />
         <span class="text-16">{{ $t('UseFace') }}</span>
       </n-button>
@@ -39,13 +39,33 @@
     <div class="login-illustration f-c-c-c">
       <img src="@/assets/images/login-illustration.png">
     </div>
+    <n-modal v-model:show="showFaceModal" transform-origin="center" @on-mask-click="cancelFace">
+      <div class="face-modal">
+        <div class="face-img">
+          <span>正在启动人脸识别模块...</span>
+        </div>
+      </div>
+    </n-modal>
   </div>
 </template>
 
 <script setup>
+import { useAppStore } from '@/stores/app.js'
+
+const appStore = useAppStore()
+
 const router = useRouter()
 const login = () => {
+  appStore.updateCurrentView('home')
   router.replace('/home')
+}
+
+const showFaceModal = ref(false)
+const faceRecognize = () => {
+  showFaceModal.value = true
+}
+const cancelFace = () => {
+  showFaceModal.value = false
 }
 </script>
 
