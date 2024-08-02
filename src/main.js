@@ -23,8 +23,6 @@ import i18n from '@/locales/index'
 
 const app = createApp(App)
 
-connectWs()
-
 const pinia = createPinia()
 pinia.use(piniaPluginPersistedstate)
 
@@ -33,5 +31,7 @@ app.use(pinia)
 app.use(router)
 
 app.use(i18n)
+
+connectWs()
 
 app.mount('#app')
