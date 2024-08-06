@@ -17,7 +17,7 @@
           </n-form-item-gi>
           <n-form-item-gi :span="9" />
           <n-form-item-gi :span="9" label="盘点人员筛选" path="inputValue">
-            <n-input v-model:value="model.userName" placeholder="请选择操作人" />
+            <n-input v-model:value="model.userName" placeholder="请选择盘点人" />
           </n-form-item-gi>
         </n-grid>
       </n-form>
@@ -57,32 +57,33 @@ const formRef = ref(null)
 const model = ref({ fileName: '', userName: '', action: '', time: [118313526e4, Date.now()] })
 
 const data = [
-  { action: 1, title: '档案盒1', state: '在柜', attribute: '操作票, 校准证书', count: '20', dueTime: '2024-09-10' },
-  { action: 2, title: '档案盒2', state: '在柜', attribute: '操作票, 校准证书', count: '18', dueTime: '2024-09-10' },
-  { action: 3, title: '档案盒3', state: '在柜', attribute: '操作票, 校准证书', count: '12', dueTime: '2024-09-10' },
-  { action: 4, title: '档案盒4', state: '在柜', attribute: '操作票, 校准证书', count: '12', dueTime: '2024-09-10' },
-  { action: 5, title: '档案盒5', state: '在柜', attribute: '操作票, 校准证书', count: '12', dueTime: '2024-09-10' },
-  { action: 6, title: '档案盒6', state: '在柜', attribute: '操作票, 校准证书', count: '12', dueTime: '2024-09-10' },
-  { action: 7, title: '档案盒7', state: '在柜', attribute: '操作票, 校准证书', count: '12', dueTime: '2024-09-10' },
-  { action: 8, title: '档案盒8', state: '在柜', attribute: '操作票, 校准证书', count: '12', dueTime: '2024-09-10' },
-  { action: 9, title: '档案盒9', state: '在柜', attribute: '操作票, 校准证书', count: '12', dueTime: '2024-09-10' },
-  { action: 10, title: '档案盒10', state: '在柜', attribute: '操作票, 校准证书', count: '12', dueTime: '2024-09-10' },
-  { action: 11, title: '档案盒11', state: '在柜', attribute: '操作票, 校准证书', count: '12', dueTime: '2024-09-10' },
-  { action: 12, title: '档案盒12', state: '在柜', attribute: '操作票, 校准证书', count: '12', dueTime: '2024-09-10' },
-  { action: 13, title: '档案盒13', state: '在柜', attribute: '操作票, 校准证书', count: '12', dueTime: '2024-09-10' },
-  { action: 14, title: '档案盒14', state: '在柜', attribute: '操作票, 校准证书', count: '12', dueTime: '2024-09-10' },
-  { action: 15, title: '档案盒15', state: '在柜', attribute: '操作票, 校准证书', count: '12', dueTime: '2024-09-10' },
-  { action: 16, title: '档案盒16', state: '在柜', attribute: '操作票, 校准证书', count: '12', dueTime: '2024-09-10' },
+  { action: 1, checkUserName: '漳卅', inBox: '58', outBox: '2', inFile: '20', outFile: '0', checkTime: '2024-09-10' },
+  { action: 2, checkUserName: '张三', inBox: '60', outBox: '0', inFile: '18', outFile: '0', checkTime: '2024-09-10' },
+  { action: 3, checkUserName: '李四', inBox: '58', outBox: '2', inFile: '12', outFile: '0', checkTime: '2024-09-10' },
+  { action: 4, checkUserName: '王五', inBox: '58', outBox: '2', inFile: '12', outFile: '0', checkTime: '2024-09-10' },
+  { action: 5, checkUserName: '周六', inBox: '58', outBox: '2', inFile: '12', outFile: '0', checkTime: '2024-09-10' },
+  { action: 6, checkUserName: '赵七', inBox: '58', outBox: '0', inFile: '12', outFile: '0', checkTime: '2024-09-10' },
+  { action: 7, checkUserName: '朱八', inBox: '58', outBox: '0', inFile: '12', outFile: '0', checkTime: '2024-09-10' },
+  { action: 8, checkUserName: '用户8', inBox: '58', outBox: '0', inFile: '12', outFile: '0', checkTime: '2024-09-10' },
+  { action: 9, checkUserName: '用户8', inBox: '58', outBox: '0', inFile: '12', outFile: '0', checkTime: '2024-09-10' },
+  { action: 10, checkUserName: '用户8', inBox: '58', outBox: '0', inFile: '12', outFile: '0', checkTime: '2024-09-10' },
+  { action: 11, checkUserName: '用户8', inBox: '58', outBox: '0', inFile: '12', outFile: '0', checkTime: '2024-09-10' },
+  { action: 12, checkUserName: '用户8', inBox: '58', outBox: '0', inFile: '12', outFile: '0', checkTime: '2024-09-10' },
+  { action: 13, checkUserName: '用户8', inBox: '58', outBox: '0', inFile: '12', outFile: '0', checkTime: '2024-09-10' },
+  { action: 14, checkUserName: '用户8', inBox: '58', outBox: '0', inFile: '12', outFile: '0', checkTime: '2024-09-10' },
+  { action: 15, checkUserName: '用户8', inBox: '58', outBox: '0', inFile: '12', outFile: '0', checkTime: '2024-09-10' },
+  { action: 16, checkUserName: '用户8', inBox: '58', outBox: '0', inFile: '12', outFile: '0', checkTime: '2024-09-10' },
 ]
 const pagination = { pageSize: 12, size: 'large' }
 const createColumns = ({ showDetail }) => {
   return [
-    { title: '动作', key: 'action', width: 60, align: 'center' },
-    { title: '档案盒', key: 'title', align: 'center' },
-    { title: '状态', key: 'state', align: 'center', width: 120, sorter: 'default' },
-    { title: '属性', key: 'attribute', align: 'center' },
-    { title: '文件数量', key: 'count', sorter: 'default', width: 120, align: 'center' },
-    { title: '最早过期', key: 'dueTime', sorter: 'default', align: 'center' },
+    { title: '序号', key: 'action', width: 60, align: 'center' },
+    { title: '盘点时间', key: 'checkTime', align: 'center' },
+    { title: '盘点人员', key: 'checkUserName', align: 'center' },
+    { title: '当前在库档案盒', key: 'inBox', align: 'center' },
+    { title: '当前借走档案盒', key: 'outBox', align: 'center' },
+    { title: '当前在库文件', key: 'inFile', align: 'center' },
+    { title: '当前借走文件', key: 'outFile', align: 'center' },
   ]
 }
 const columns = createColumns({

@@ -1,6 +1,6 @@
 <template>
   <div class="login-box f-c-c">
-    <div class="login-form f-c-c-c">
+    <div id="login-form" class="login-form f-c-c-c">
       <div class="custom-color text-28 fw-700 lh-80">
         RFID 智能档案柜
       </div>
@@ -39,18 +39,30 @@
     <div class="login-illustration f-c-c-c">
       <img src="@/assets/images/login-illustration.png">
     </div>
-    <n-modal v-model:show="showFaceModal" transform-origin="center" @on-mask-click="cancelFace">
-      <div class="face-modal">
-        <div class="face-img">
-          <span>正在启动人脸识别模块...</span>
-        </div>
-      </div>
-    </n-modal>
+    <n-drawer
+      v-model:show="showFaceModal"
+      width="100%"
+      :height="620"
+      placement="bottom"
+      :trap-focus="false"
+      :block-scroll="false"
+      to="#login-form"
+      :mask-closable="false"
+      @after-leave="cancelFace"
+    >
+      <n-drawer-content closable title="人脸识别">
+        <!-- <span>正在启动人脸识别模块...</span> -->
+        <img v-if="loading" class="loading-img" src="@/assets/images/loading.svg">
+        <img v-else ref="faceRef" class="face-img">
+      </n-drawer-content>
+    </n-drawer>
   </div>
 </template>
 
 <script setup>
 import { useAppStore } from '@/stores/app.js'
+import { mitter } from '@/utils/mitt'
+import { sendWs } from '@/utils/webSocket'
 
 const appStore = useAppStore()
 
@@ -61,11 +73,30 @@ const login = () => {
 }
 
 const showFaceModal = ref(false)
+const loading = ref(true)
+const faceRef = ref(null)
 const faceRecognize = () => {
   showFaceModal.value = true
+  setTimeout(() => {
+    sendWs({ action: 'face_recognize' })
+  }, 500)
+  mitter.on('frame', (val) => {
+    if (val) {
+      loading.value = false
+    }
+    if (faceRef.value) {
+      faceRef.value.src = val
+    }
+  })
 }
+onUnmounted(() => {
+  mitter.off('frame')
+})
 const cancelFace = () => {
   showFaceModal.value = false
+  loading.value = true
+  mitter.off('frame')
+  sendWs({ action: 'close', type: 1 })
 }
 </script>
 

@@ -1,5 +1,5 @@
 .login-box {
-  width: 95%;
+  width: 96%;
   height: calc(90% - 2px);
   margin-top: 2%;
   background: #ffffff;
@@ -39,27 +39,22 @@
   color: #949798;
 }
 
-
-@property --angle {
-  syntax: '<angle>';
-  inherits: false;
-  initial-value: 0deg;
-}
-
-@keyframes rotate {
-  to {
-      --angle: 360deg;
-  }
+:deep(.n-drawer.n-drawer--bottom-placement){
+  border-top-left-radius: 16px!important;
+  border-top-right-radius: 16px!important;
 }
 .face-img {
-  width: 597px;
-  height: 597px;
-  border-radius: 50%;
-  background: #000000;
+  height: 97%;
+  border-radius: 16px;
+}
+.loading-img {
+  height: 50%;
+  margin-top: 25%;
+}
+:deep(.n-drawer-body){
   display: flex;
-  align-items: center;
   justify-content: center;
-  color: #ffffffbd;
+    align-items: center;
 }
 
 .face-modal {

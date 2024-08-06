@@ -10,7 +10,7 @@
           :key="index"
           :class="classFormate(item)"
           class="file-item"
-          @click="gotoArchive($event, item)"
+          @click="handle($event, item)"
         >
           <!-- {{ index + 1 }} -->
         </div>
@@ -26,6 +26,10 @@
 <script setup>
 import { toggleAnimation } from '@/utils/tools'
 
+// 模式：1. 正常显示和点击显示详情模式（包含报警）
+// 模式：2. 操作模式，新增档案盒、领走、借用模式
+const type = ref(1)
+
 function getRandom(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min
 }
@@ -34,14 +38,16 @@ const fileBoxList = ref([])
 onMounted(() => {
   fileBoxList.value = []
   for (let i = 0; i < 60; i++) {
-    fileBoxList.value.push({ index: i, state: getRandom(0, 1),
+    fileBoxList.value.push({ index: i, state: getRandom(0, 3),
     })
   }
 })
 
 const router = useRouter()
-const gotoArchive = ({ clientX, clientY }, row) => {
-  toggleAnimation(clientX, clientY, () => router.push('/archive'))
+const handle = ({ clientX, clientY }, row) => {
+  if (type.value === 1) {
+    toggleAnimation(clientX, clientY, () => router.push('/archive'))
+  }
 }
 
 const classFormate = (val) => {
@@ -60,7 +66,7 @@ const classFormate = (val) => {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .file-body {
   width: 80%;
   height: 90%;
@@ -110,11 +116,13 @@ const classFormate = (val) => {
     background: #ffffff;
   }
 }
+
 .tips {
-  animation: blink-tips 0.6s infinite;
+  animation: blink-tips 0.6s 3;
 }
-.alarm {
-  animation: blink-alarm 2s infinite;
+
+@mixin alarm {
+  animation: blink-alarm 4s infinite;
 }
 .empty {
   background: #ffffffbd;
@@ -123,20 +131,47 @@ const classFormate = (val) => {
   background: #18a057bd;
 }
 .warning {
+  @include alarm;
   background: #f0a020bd;
 }
 .danger {
+  @include alarm;
   background: #d03050bd;
 }
+
 @keyframes blink-alarm {
   0% {
     opacity: 1; /* 完全不透明 */
   }
+  15% {
+    opacity: 0.85;
+  }
+  25% {
+    opacity: 0.75;
+  }
+  35% {
+    opacity: 0.65;
+  }
+  40% {
+    opacity: 0.6;
+  }
   50% {
-    opacity: 0; /* 完全透明 */
+    opacity: 0.5; /* 半透明 */
+  }
+  55% {
+    opacity: 0.6;
+  }
+  65% {
+    opacity: 0.65;
+  }
+  75% {
+    opacity: 0.75;
+  }
+  85% {
+    opacity: 0.85;
   }
   100% {
-    opacity: 1; /* 再次不透明 */
+    opacity: 1; /* 完全不透明 */
   }
 }
 @keyframes blink-tips {

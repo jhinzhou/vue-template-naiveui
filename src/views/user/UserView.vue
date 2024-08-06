@@ -33,61 +33,78 @@
         flex-height
       />
       <div class="operation-group f-s-c-r pt-6">
-        <n-button type="primary" round dashed @click="addBox">
+        <NButton type="primary" round dashed @click="addBox">
           <i class="i-line-md:person-add mx-8 text-19" /><span class="mx-8 text-18">新增用户</span>
-        </n-button>
+        </NButton>
       </div>
     </div>
     <ZBack>
-      <n-button type="primary" round ghost>
+      <NButton type="primary" round ghost>
         <template #icon>
           <i class="i-line-md:rotate-270 text-20" />
         </template>
         重置搜索
-      </n-button>
-      <n-button type="primary" ghost>
+      </NButton>
+      <NButton type="primary" ghost>
         <template #icon>
           <i class="i-line-md:search text-20" />
         </template>
         搜索
-      </n-button>
+      </NButton>
     </ZBack>
   </div>
 </template>
 
 <script setup>
+import { NButton } from 'naive-ui'
 import ZBack from '@/components/ZBack.vue'
 
 const formRef = ref(null)
 const model = ref({ fileName: '', userName: '', action: '', time: [118313526e4, Date.now()] })
 
 const data = [
-  { action: 1, title: '档案盒1', state: '在柜', attribute: '操作票, 校准证书', count: '20', dueTime: '2024-09-10' },
-  { action: 2, title: '档案盒2', state: '在柜', attribute: '操作票, 校准证书', count: '18', dueTime: '2024-09-10' },
-  { action: 3, title: '档案盒3', state: '在柜', attribute: '操作票, 校准证书', count: '12', dueTime: '2024-09-10' },
-  { action: 4, title: '档案盒4', state: '在柜', attribute: '操作票, 校准证书', count: '12', dueTime: '2024-09-10' },
-  { action: 5, title: '档案盒5', state: '在柜', attribute: '操作票, 校准证书', count: '12', dueTime: '2024-09-10' },
-  { action: 6, title: '档案盒6', state: '在柜', attribute: '操作票, 校准证书', count: '12', dueTime: '2024-09-10' },
-  { action: 7, title: '档案盒7', state: '在柜', attribute: '操作票, 校准证书', count: '12', dueTime: '2024-09-10' },
-  { action: 8, title: '档案盒8', state: '在柜', attribute: '操作票, 校准证书', count: '12', dueTime: '2024-09-10' },
-  { action: 9, title: '档案盒9', state: '在柜', attribute: '操作票, 校准证书', count: '12', dueTime: '2024-09-10' },
-  { action: 10, title: '档案盒10', state: '在柜', attribute: '操作票, 校准证书', count: '12', dueTime: '2024-09-10' },
-  { action: 11, title: '档案盒11', state: '在柜', attribute: '操作票, 校准证书', count: '12', dueTime: '2024-09-10' },
-  { action: 12, title: '档案盒12', state: '在柜', attribute: '操作票, 校准证书', count: '12', dueTime: '2024-09-10' },
-  { action: 13, title: '档案盒13', state: '在柜', attribute: '操作票, 校准证书', count: '12', dueTime: '2024-09-10' },
-  { action: 14, title: '档案盒14', state: '在柜', attribute: '操作票, 校准证书', count: '12', dueTime: '2024-09-10' },
-  { action: 15, title: '档案盒15', state: '在柜', attribute: '操作票, 校准证书', count: '12', dueTime: '2024-09-10' },
-  { action: 16, title: '档案盒16', state: '在柜', attribute: '操作票, 校准证书', count: '12', dueTime: '2024-09-10' },
+  { index: 1, userName: '漳卅', roleName: '管理员', jobNum: 'P199702301', count: '20', updateTime: '2024-09-10' },
+  { index: 2, userName: '张三', roleName: '管理员', jobNum: 'P200702301', count: '18', updateTime: '2024-09-10' },
+  { index: 3, userName: '李四', roleName: '管理员', jobNum: 'P200802301', count: '12', updateTime: '2024-09-10' },
+  { index: 4, userName: '王五', roleName: '普通用户', jobNum: 'P200902301', count: '12', updateTime: '2024-09-10' },
+  { index: 5, userName: '周六', roleName: '管理员', jobNum: 'P201702301', count: '12', updateTime: '2024-09-10' },
+  { index: 6, userName: '赵七', roleName: '管理员', jobNum: 'P201802301', count: '12', updateTime: '2024-09-10' },
+  { index: 7, userName: '朱八', roleName: '普通用户', jobNum: 'P200702301', count: '12', updateTime: '2024-09-10' },
+  { index: 8, userName: '用户8', roleName: '管理员', jobNum: 'P200702301', count: '12', updateTime: '2024-09-10' },
+  { index: 9, userName: '用户9', roleName: '管理员', jobNum: 'P200702301', count: '12', updateTime: '2024-09-10' },
+  { index: 10, userName: '用户10', roleName: '管理员', jobNum: 'P200702301', count: '12', updateTime: '2024-09-10' },
+  { index: 11, userName: '用户11', roleName: '管理员', jobNum: 'P200702301', count: '12', updateTime: '2024-09-10' },
+  { index: 12, userName: '用户12', roleName: '管理员', jobNum: 'P200702301', count: '12', updateTime: '2024-09-10' },
+  { index: 13, userName: '用户13', roleName: '管理员', jobNum: 'P200702301', count: '12', updateTime: '2024-09-10' },
+  { index: 14, userName: '用户14', roleName: '管理员', jobNum: 'P200702301', count: '12', updateTime: '2024-09-10' },
+  { index: 15, userName: '用户15', roleName: '管理员', jobNum: 'P200702301', count: '12', updateTime: '2024-09-10' },
+  { index: 16, userName: '用户16', roleName: '管理员', jobNum: 'P200702301', count: '12', updateTime: '2024-09-10' },
 ]
 const pagination = { pageSize: 12, size: 'large' }
 const createColumns = ({ showDetail }) => {
   return [
-    { title: '动作', key: 'action', width: 60, align: 'center' },
-    { title: '档案盒', key: 'title', align: 'center' },
-    { title: '状态', key: 'state', align: 'center', width: 120, sorter: 'default' },
-    { title: '属性', key: 'attribute', align: 'center' },
-    { title: '文件数量', key: 'count', sorter: 'default', width: 120, align: 'center' },
-    { title: '最早过期', key: 'dueTime', sorter: 'default', align: 'center' },
+    { title: '序号', key: 'index', width: 60, align: 'center' },
+    { title: '姓名', key: 'userName', align: 'center' },
+    { title: '工号', key: 'jobNum', align: 'center' },
+    { title: '角色', key: 'roleName', align: 'center', sorter: 'default' },
+    { title: '创建时间', key: 'updateTime', sorter: 'default', align: 'center' },
+    { title: '操作', key: 'opera', align: 'center', render(row) {
+      return h('span', [h(NButton, {
+        strong: true,
+        tertiary: true,
+        size: 'small',
+        type: 'primary',
+        class: 'mx-4',
+        onClick: $event => showDetail($event, row),
+      }, { default: () => '编辑' }), h(NButton, {
+        strong: true,
+        tertiary: true,
+        size: 'small',
+        type: 'error',
+        class: 'mx-4',
+        onClick: () => showDetail(row),
+      }, { default: () => '删除' })])
+    } },
   ]
 }
 const columns = createColumns({
